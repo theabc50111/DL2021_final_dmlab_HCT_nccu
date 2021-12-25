@@ -1,3 +1,12 @@
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.seasonal import seasonal_decompose
+from statsmodels.tsa.arima_model import ARIMA
+import matplotlib.pyplot as plt
+from pylab import rcParams
+
+
 class EDA:
     def __init__(self, obj_ticker, price_type):
         self.obj_ticker = obj_ticker
