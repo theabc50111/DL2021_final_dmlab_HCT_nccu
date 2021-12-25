@@ -1,6 +1,7 @@
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np 
+import pandas as pd
 from pathlib import Path
+from datetime import datetime
 
 
 class GetData:
@@ -25,18 +26,20 @@ class GetData:
 
         return list_ticker
     
-    def get_price_data(self, price_type, ticker_list=[], ignore_index=False, only_recent=False, recent_len=1):
+    def get_price_data(self, price_type, ticker_list=[], date_index=True, ignore_index=False, only_recent=False, recent_len=1):
         '''
         option:
             price_type: choose:"High", "Low", "Open", "Close", "Adj Close"
             ticker_list: input a list of ticker of stocks
+            date_index: True => set date as index
             ignore_index: True => ignore original index
             only_recent: True => get newest price
             recent_len: number：　the number of newest price
         '''
         self.ticker_list = ticker_list
         path_price = self.path/Path('FS_sp500_Value.csv')
-        combined_price = pd.read_csv(path_price)
+        dateparse = lambda dates: datetime.strptime(dates, '%Y-%m-%d')
+        combined_price = pd.read_csv(path_price, index_col='Date', parse_dates=['Date'], date_parser=dateparse) if date_index else pd.read_csv(path_price)
         df_price = pd.DataFrame({'Ticker':[] ,f'{price_type}': []})
 
         for symbol in self.ticker_list:
