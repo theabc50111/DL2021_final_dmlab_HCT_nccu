@@ -79,8 +79,8 @@ class EDA:
 
         d =  ndiffs(timeseries, test="adf") # 差分次數
         print('*='*50)
-        if (adft[0]>0.05 or adft[0] > adft[4]['10%'] or adft[0] > adft[4]['5%'] or adft[0] > adft[4]['1%']):
-            print(f'{self.obj_ticker}\'s {timeseries.name} is not stationary, and d for arima is {d}')
+        if (adft[0]>0.05 or adft[0]>adft[4]['10%'] or adft[0]>adft[4]['5%'] or adft[0]>adft[4]['1%']):
+            print(f'{self.obj_ticker}\'s {timeseries.name} is not stationary, and the suggest d for arima is {d}')
         else:
             print(f'{self.obj_ticker}\'s {timeseries.name} is stationary, and d for arima is {d}')
         print('*='*50)
