@@ -1,2 +1,2 @@
 ,Timestep,Hidden_Layers,Learning_Rate,Batch_Size,epochs,Loss,Activation,Train_Loss,Val_Loss
-0,50,"[40, 35]",0.001,64,50,mean_squared_error,selu,0.002774508157745004,0.005059579678345472
+0,50,"[40, 35]",0.001,64,50,mean_squared_error,selu,0.0028359959833323956,0.005327017547097057
